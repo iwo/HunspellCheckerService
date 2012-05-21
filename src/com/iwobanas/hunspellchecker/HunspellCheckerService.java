@@ -1,5 +1,7 @@
 package com.iwobanas.hunspellchecker;
 
+import java.io.UnsupportedEncodingException;
+
 import android.service.textservice.SpellCheckerService;
 import android.util.Log;
 import android.view.textservice.SuggestionsInfo;
@@ -41,8 +43,15 @@ public class HunspellCheckerService extends SpellCheckerService {
             }
             final long startTime = System.currentTimeMillis();
             final String input = textInfo.getText();
+            byte[] inputBytes = null;
+			try {
+				inputBytes = input.getBytes("ISO-8859-2");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             
-            final int hunspellResult = hunspell.spell(input);
+            final int hunspellResult = hunspell.spell(inputBytes);
             
             if (hunspellResult != 0)
             {
@@ -52,7 +61,7 @@ public class HunspellCheckerService extends SpellCheckerService {
             	}
             	return new SuggestionsInfo(SuggestionsInfo.RESULT_ATTR_IN_THE_DICTIONARY, new String[]{});
             }
-            String[] suggestions = hunspell.getSuggestions(input);
+            String[] suggestions = hunspell.getSuggestions(inputBytes);
             if (DBG)
         	{
         		Log.d(TAG, suggestions.length + " suggestions time: " + (System.currentTimeMillis() - startTime) + "ms");
