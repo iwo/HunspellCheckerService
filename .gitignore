@@ -1,0 +1,7 @@
+# Generated files
+obj/
+gen/
+bin/
+libs/
+project.properties
+
