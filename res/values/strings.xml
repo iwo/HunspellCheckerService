@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HuspellChecker</string>
+    <string name="spellchecker_name">Hunspell correction</string>
+    <string name="subtype_generic" translatable="false">%s</string>
+</resources>

@@ -1,0 +1,7 @@
+HunspellCheckerService is a prototype of Android SpellCheckerService using Hunspell and JNI.
+Unfortunately the prototype proved that Hunspell suggestions generation is too slow to be used on Android smartphones.
+It takes up to few seconds to generate suggestions for a longer word.
+
+I hope this project may save you some time if you are considering using Hunspell on Android.
+
+Run "ndk-build" (from Android NDK) in the root project directory to compile the hunspell-jni.so shared library.
